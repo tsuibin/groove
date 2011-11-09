@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     ipinfo.cpp \
     iplist.cpp \
     commserver.cpp \
-    login.cpp
+    login.cpp \
+    gsession.cpp
 
 HEADERS  += comm.h \
     sendmessage.h \
@@ -29,7 +30,8 @@ HEADERS  += comm.h \
     ipinfo.h \
     iplist.h \
     commserver.h \
-    login.h
+    login.h \
+    gsession.h
 
 FORMS    += comm.ui \
     sendmessage.ui \

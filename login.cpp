@@ -1,6 +1,7 @@
 #include "login.h"
 #include "ui_login.h"
 #include <QDebug>
+#include <QDesktopWidget>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -8,6 +9,14 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QDesktopWidget* desktop = QApplication::desktop();
+    this->move((desktop->width() - this->width())/2,
+         (desktop->height() - this->height())/2);
+
+
+    ui->lineEdit_uname->setFocus();
+    connect(ui->lineEdit_uname,SIGNAL(returnPressed()),ui->lineEdit_pwd,SLOT(setFocus()));
+    connect(ui->lineEdit_pwd,SIGNAL(returnPressed()),this,SLOT(on_pushButton_login_clicked()));
 
     m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setHostName("localhost");
@@ -15,7 +24,6 @@ Login::Login(QWidget *parent) :
     m_db.setUserName("dbname");
     m_db.setPassword("dbpwd");
     m_db.open();
-
 
 }
 
@@ -44,6 +52,11 @@ void Login::on_pushButton_login_clicked()
         if (ui->lineEdit_pwd->text() == pwd)
         {
             ui->label_msg->setText("登录成功！");
+            GSession session;
+          //  session.uname = uname;
+
+            emit loginSuccess();
+            this->close();
         } else {
             ui->label_msg->setText("登录失败，密码错误！");
         }

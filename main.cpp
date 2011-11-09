@@ -1,6 +1,5 @@
 #include <QtGui/QApplication>
 #include <QTextCodec>
-
 #include "comm.h"
 #include "commserver.h"
 
@@ -16,6 +15,8 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
     Comm w;
+    w.login();
+    /*
     CommServer s;
 
     port = 5000;
@@ -24,6 +25,6 @@ int main(int argc, char *argv[])
     } else {
         qDebug() << s.errorString();
     }
-
+*/
     return a.exec();
 }

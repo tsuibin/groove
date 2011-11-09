@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDebug>
+#include "gsession.h"
 
 
 
@@ -31,6 +32,7 @@ private:
     Ui::SendMessage *ui;
     QList< Message * > m_messageList;
     QList< Workspace * > m_workspaceList;
+    void setUserInfo();
 };
 
 #endif // SENDMESSAGE_H
