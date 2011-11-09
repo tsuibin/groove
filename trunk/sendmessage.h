@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QDebug>
+#include <QTime>
+
 #include "gsession.h"
 
 

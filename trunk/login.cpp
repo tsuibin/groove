@@ -47,21 +47,19 @@ void Login::on_pushButton_login_clicked()
         }
     }
 
-    if (ui->lineEdit_uname->text() == uname)
-    {
-        if (ui->lineEdit_pwd->text() == pwd)
-        {
+    if (ui->lineEdit_uname->text() == uname) {
+        if (ui->lineEdit_pwd->text() == pwd) {
             ui->label_msg->setText("登录成功！");
-            GSession session;
-          //  session.uname = uname;
-
+            GSession::uname = uname;
             emit loginSuccess();
             this->close();
         } else {
             ui->label_msg->setText("登录失败，密码错误！");
+            ui->lineEdit_pwd->selectAll();
         }
     } else {
         ui->label_msg->setText("登录失败，没有该用户！");
+        ui->lineEdit_uname->selectAll();
     }
 
 }

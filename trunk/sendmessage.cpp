@@ -17,13 +17,11 @@ SendMessage::SendMessage(QWidget *parent) :
 
     this->setUserInfo();
 
-    qDebug() << "con";
-
 }
 
 SendMessage::~SendMessage()
 {
-    qDebug() << "des";
+
     for(int i = 0; i < m_messageList.size(); i++)
     {
         delete m_messageList.at(i);
@@ -53,8 +51,5 @@ void SendMessage::on_pushButton_5_clicked()
 
 void SendMessage::setUserInfo()
 {
-    GSession session;
-
-   // QString uname = b.uname;
-    //ui->label_uinfo->setText("下午好！" + uname);
+    ui->label_uinfo->setText( GSession::getTimeName() +"，" + GSession::uname);
 }
