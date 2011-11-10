@@ -82,9 +82,13 @@ void GSession::openDatabase()
     m_db.setUserName("dbname");
     m_db.setPassword("dbpwd");
     m_db.open();
+
+
 }
 
 void GSession::closeDatabase()
 {
     m_db.close();
 }
+
+

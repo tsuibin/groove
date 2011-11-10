@@ -6,6 +6,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QSqlDatabase>
+#include <QDebug>
 /*
  GSession 用户会话数据
 */
