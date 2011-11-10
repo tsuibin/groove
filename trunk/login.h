@@ -20,13 +20,16 @@ public:
     ~Login();
 signals:
     void loginSuccess();
+    void showRegister();
 
 private slots:
     void on_pushButton_login_clicked();
 
+    void on_pushButton_reg_clicked();
+
 private:
     Ui::Login *ui;
-    QSqlDatabase m_db;
+//    QSqlDatabase m_db;
 };
 
 #endif // LOGIN_H

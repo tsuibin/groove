@@ -42,7 +42,7 @@
   <widget class="QPushButton" name="pushButton_login">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>170</x>
      <y>140</y>
      <width>120</width>
      <height>30</height>
@@ -52,17 +52,17 @@
     <string>登录</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_cancel">
+  <widget class="QPushButton" name="pushButton_reg">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>30</x>
      <y>140</y>
      <width>120</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>注册</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_uname">

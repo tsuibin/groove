@@ -9,36 +9,45 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QDesktopWidget* desktop = QApplication::desktop();
-    this->move((desktop->width() - this->width())/2,
-         (desktop->height() - this->height())/2);
+//    QDesktopWidget* desktop = QApplication::desktop();
+//    this->move((desktop->width() - this->width())/2,
+//         (desktop->height() - this->height())/2);
 
+    GSession::moveToCentre(this);
 
     ui->lineEdit_uname->setFocus();
     connect(ui->lineEdit_uname,SIGNAL(returnPressed()),ui->lineEdit_pwd,SLOT(setFocus()));
     connect(ui->lineEdit_pwd,SIGNAL(returnPressed()),this,SLOT(on_pushButton_login_clicked()));
 
-    m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setHostName("localhost");
-    m_db.setDatabaseName("user.db");
-    m_db.setUserName("dbname");
-    m_db.setPassword("dbpwd");
-    m_db.open();
+//    m_db = QSqlDatabase::addDatabase("QSQLITE");
+//    m_db.setHostName("localhost");
+//    m_db.setDatabaseName("user.db");
+//    m_db.setUserName("dbname");
+//    m_db.setPassword("dbpwd");
+//    m_db.open();
 
 }
 
 Login::~Login()
 {
-    m_db.close();
+    //m_db.close();
     delete ui;
 }
 
 void Login::on_pushButton_login_clicked()
 {
-    QString uname;
-    QString pwd;
+    QString uname,luname;
+    QString pwd,lpwd;
     QSqlQuery query;
-    QString sql = "SELECT name,pwd FROM user WHERE name = '" + ui->lineEdit_uname->text() + "';";
+    luname = ui->lineEdit_uname->text();
+    lpwd = ui->lineEdit_pwd->text();
+    if (luname.isEmpty()) {
+        ui->label_msg->setText("请输入用户名！");
+        ui->lineEdit_uname->setFocus();
+        return;
+    }
+
+    QString sql = "SELECT name,pwd FROM user WHERE name = '" + luname + "';";
     //qDebug() << sql;
     if ( query.exec( sql ) ) {
         while(query.next()) {
@@ -55,11 +64,20 @@ void Login::on_pushButton_login_clicked()
             this->close();
         } else {
             ui->label_msg->setText("登录失败，密码错误！");
+            ui->lineEdit_pwd->setFocus();
             ui->lineEdit_pwd->selectAll();
         }
     } else {
         ui->label_msg->setText("登录失败，没有该用户！");
+        ui->lineEdit_uname->setFocus();
         ui->lineEdit_uname->selectAll();
     }
 
+}
+
+void Login::on_pushButton_reg_clicked()
+{
+    this->hide();
+    GSession::moveToCentre(this);
+    emit showRegister();
 }
