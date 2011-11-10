@@ -1,7 +1,11 @@
 #include <QtGui/QApplication>
 #include <QTextCodec>
+#include <QNetworkInterface>
+
 #include "comm.h"
 #include "commserver.h"
+#include "gsession.h"
+#include "ipinfo.h"
 
 
 quint16 port;
@@ -18,6 +22,7 @@ int main(int argc, char *argv[])
 
     Comm w;
     w.login();
+
     /*
     CommServer s;
 
@@ -28,5 +33,16 @@ int main(int argc, char *argv[])
         qDebug() << s.errorString();
     }
 */
+
+
+    qDebug() << IPinfo::IPv4Address;
+
+
+
+
+
+
+
     return a.exec();
+
 }

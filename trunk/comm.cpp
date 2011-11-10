@@ -11,22 +11,24 @@ Comm::Comm(QWidget *parent) :
     ui(new Ui::Comm)
 {
     ui->setupUi(this);
-    GSession::openDatabase();
+
     //控制台
+    GSession::openDatabase();
 
 }
 
 Comm::~Comm()
 {
     qDebug() << "comm de";
+    GSession::closeDatabase();
     delete this->m_sendMessage;
     delete this->m_login;
-    GSession::closeDatabase();
     delete ui;
 }
 
 void Comm::login()
 {
+
     this->m_login = new Login();
     this->m_login->show();
     connect(this->m_login,SIGNAL(loginSuccess()),this,SLOT(createModule()));
@@ -36,6 +38,7 @@ void Comm::login()
 }
 void Comm::createModule()
 {
+
     this->m_sendMessage = new SendMessage();
     this->m_sendMessage->show();
 
