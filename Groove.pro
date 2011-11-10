@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     iplist.cpp \
     commserver.cpp \
     login.cpp \
-    gsession.cpp
+    gsession.cpp \
+    gregister.cpp
 
 HEADERS  += comm.h \
     sendmessage.h \
@@ -31,11 +32,13 @@ HEADERS  += comm.h \
     iplist.h \
     commserver.h \
     login.h \
-    gsession.h
+    gsession.h \
+    gregister.h
 
 FORMS    += comm.ui \
     sendmessage.ui \
     workspace.ui \
     tip.ui \
     message.ui \
-    login.ui
+    login.ui \
+    gregister.ui

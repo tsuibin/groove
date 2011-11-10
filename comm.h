@@ -2,12 +2,13 @@
 #define COMM_H
 
 #include <QWidget>
-#include "login.h"
+
 
 
 class SendMessage;
 class CommServer;
-
+class Login;
+class GRegister;
 
 namespace Ui {
     class Comm;
@@ -24,13 +25,14 @@ public:
 
 public slots:
     void createModule();
+    void showRegisterSlot();
 
 private:
     Ui::Comm *ui;
     SendMessage *m_sendMessage;
     Login *m_login;
     CommServer *m_commServer;
-
+    GRegister *m_gregister;
 };
 
 #endif // COMM_H

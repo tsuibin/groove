@@ -2,6 +2,7 @@
 
 
 QString GSession::uname = "";
+QSqlDatabase GSession::m_db;
 
 QString GSession::getTimeName()
 {
@@ -62,4 +63,28 @@ QString GSession::getTimeName()
     }
 
     return timeName;
+}
+
+
+void GSession::moveToCentre(QWidget *widget)
+{
+    QDesktopWidget* desktop = QApplication::desktop();
+    widget->move((desktop->width() - widget->width())/2,
+         (desktop->height() - widget->height())/2);
+}
+
+void GSession::openDatabase()
+{
+
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setHostName("localhost");
+    m_db.setDatabaseName("user.db");
+    m_db.setUserName("dbname");
+    m_db.setPassword("dbpwd");
+    m_db.open();
+}
+
+void GSession::closeDatabase()
+{
+    m_db.close();
 }
