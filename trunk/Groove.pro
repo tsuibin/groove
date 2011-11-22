@@ -42,3 +42,6 @@ FORMS    += comm.ui \
     message.ui \
     login.ui \
     gregister.ui
+
+RESOURCES += \
+    rs.qrc

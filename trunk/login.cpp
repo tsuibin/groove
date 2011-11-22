@@ -8,22 +8,18 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-
-
+    QPixmap pixmap("/home/akaedu/groove-read-only5/image/loginbk1.png");
+    pixmap = pixmap.scaled(325,231,Qt::KeepAspectRatio);
+    ui->label_login->setPixmap(pixmap);
     GSession::moveToCentre(this);
 
     ui->lineEdit_uname->setFocus();
     connect(ui->lineEdit_uname,SIGNAL(returnPressed()),ui->lineEdit_pwd,SLOT(setFocus()));
     connect(ui->lineEdit_pwd,SIGNAL(returnPressed()),this,SLOT(on_pushButton_login_clicked()));
-
-
-
 }
 
 Login::~Login()
 {
-    qDebug() << "~Login";
-
     delete ui;
 }
 
@@ -39,18 +35,13 @@ void Login::on_pushButton_login_clicked()
         ui->lineEdit_uname->setFocus();
         return;
     }
-
     QString sql = "SELECT name,pwd FROM user WHERE name = '" + luname + "';";
-    //qDebug() << sql;
-
     if ( query.exec( sql ) ) {
         while(query.next()) {
             uname = query.value(0).toString();
             pwd = query.value(1).toString();
         }
     }
-
-
     if (ui->lineEdit_uname->text() == uname) {
         if (ui->lineEdit_pwd->text() == pwd) {
             ui->label_msg->setText("登录成功！");
@@ -72,7 +63,7 @@ void Login::on_pushButton_login_clicked()
 
 void Login::on_pushButton_reg_clicked()
 {
-    this->hide();
+    this->close();
     GSession::moveToCentre(this);
     emit showRegister();
 }
