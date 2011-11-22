@@ -8,11 +8,10 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    QPixmap pixmap("/home/akaedu/groove-read-only5/image/loginbk1.png");
+    QPixmap pixmap("./image/loginbk1.png");
     pixmap = pixmap.scaled(325,231,Qt::KeepAspectRatio);
     ui->label_login->setPixmap(pixmap);
     GSession::moveToCentre(this);
-
     ui->lineEdit_uname->setFocus();
     connect(ui->lineEdit_uname,SIGNAL(returnPressed()),ui->lineEdit_pwd,SLOT(setFocus()));
     connect(ui->lineEdit_pwd,SIGNAL(returnPressed()),this,SLOT(on_pushButton_login_clicked()));
@@ -20,6 +19,7 @@ Login::Login(QWidget *parent) :
 
 Login::~Login()
 {
+    qDebug()<<"~Login";
     delete ui;
 }
 
@@ -47,7 +47,7 @@ void Login::on_pushButton_login_clicked()
             ui->label_msg->setText("登录成功！");
             GSession::uname = uname;
             emit loginSuccess();
-            this->close();
+            this->hide();
         } else {
             ui->label_msg->setText("登录失败，密码错误！");
             ui->lineEdit_pwd->setFocus();
@@ -63,7 +63,7 @@ void Login::on_pushButton_login_clicked()
 
 void Login::on_pushButton_reg_clicked()
 {
-    this->close();
     GSession::moveToCentre(this);
     emit showRegister();
+    this->hide();
 }

@@ -15,9 +15,7 @@ Comm::Comm(QWidget *parent) :
     ui(new Ui::Comm)
 {
     ui->setupUi(this);
-    GSession::openDatabase();
 
-    //控制台
 }
 
 Comm::~Comm()
@@ -36,20 +34,18 @@ Comm::~Comm()
 
 void Comm::login()
 {
+    GSession::openDatabase();
     this->m_login = new Login();
     this->m_login->show();
     connect(this->m_login,SIGNAL(loginSuccess()),this,SLOT(createModule()));
     connect(this->m_login,SIGNAL(showRegister()),this,SLOT(showRegisterSlot()));
-
-
-
 }
+
 void Comm::createModule()
 {
     this->m_sendMessage = new SendMessage();
     this->m_commServer = new CommServer();
     this->m_message = new Message();
-//    this->m_tip = new Tip();
     this->m_sendMessage->show();
 
     GSession::closeDatabase();
@@ -59,8 +55,6 @@ void Comm::createModule()
     connect(m_sendMessage,SIGNAL(closeALLtalkwidget()),this,SLOT(closeALLslots()));
     connect(m_commServer,SIGNAL(newmessageemit(QString)),this,SLOT(tipshow(QString)));
     connect(m_commServer,SIGNAL(oldmessageemit(QString)),this,SLOT(talkMessage(QString)));
-//    connect(m_tip,SIGNAL(showtalkwindows(QString)),this,SLOT(talkwidegt(QString)));
-
     connect(m_message,SIGNAL(closetalkWidget(QString)),this,SLOT(removeMsgWidgetList(QString)));
 }
 

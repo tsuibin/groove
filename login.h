@@ -29,7 +29,6 @@ private slots:
 
 private:
     Ui::Login *ui;
-//    QSqlDatabase m_db;
 };
 
 #endif // LOGIN_H
