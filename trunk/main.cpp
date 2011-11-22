@@ -14,19 +14,8 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
-
-
     Comm w;
     w.login();
-    /*
-    CommServer s;
 
-    port = 5000;
-    if ( s.listen(QHostAddress::Any, port) ) {
-        qDebug() << "listen ok";
-    } else {
-        qDebug() << s.errorString();
-    }
-*/
     return a.exec();
 }

@@ -10,7 +10,7 @@ QStringList GSession::ipList;
 
 QString GSession::getTimeName()
 {
-
+    qDebug() << "getTimeName";
     //凌晨 1 - 5
     //早上 6 - 8
     //上午 9 - 11
@@ -72,6 +72,7 @@ QString GSession::getTimeName()
 
 void GSession::moveToCentre(QWidget *widget)
 {
+    qDebug() << "moveToCentre";
     QDesktopWidget* desktop = QApplication::desktop();
     widget->move((desktop->width() - widget->width())/2,
          (desktop->height() - widget->height())/2);
@@ -79,7 +80,7 @@ void GSession::moveToCentre(QWidget *widget)
 
 void GSession::openDatabase()
 {
-
+    qDebug() << "openDatabase";
     m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setHostName("localhost");
     m_db.setDatabaseName("user.db");
@@ -91,24 +92,23 @@ void GSession::openDatabase()
 
 void GSession::closeDatabase()
 {
+    qDebug() << "closeDatabase";
     m_db.close();
-
 }
 
 void GSession::openmsDatabase()
 {
-
+    qDebug() << "openmsDatabase";
     ms_db = QSqlDatabase::addDatabase("QSQLITE");
     ms_db.setHostName("localhost");
     ms_db.setDatabaseName("usermessage.db");
     ms_db.setUserName("dbname");
     ms_db.setPassword("dbpwd");
     ms_db.open();
-    qDebug() << "sql2 ok";
 }
 
 void GSession::closemsDatabase()
 {
+    qDebug() << "closemsDatabase";
     ms_db.close();
-
 }
