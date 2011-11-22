@@ -6,70 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>230</width>
+    <width>246</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>210</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>username</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>80</y>
-     <width>210</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>username</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>120</y>
-     <width>210</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>username</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>160</y>
-     <width>210</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>username</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>350</y>
+     <x>17</x>
+     <y>520</y>
      <width>211</width>
      <height>27</height>
     </rect>
@@ -82,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>11</y>
+     <y>40</y>
      <width>191</width>
      <height>20</height>
     </rect>
@@ -91,6 +39,111 @@
     <string/>
    </property>
   </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>204</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>在线用户信息列表</string>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <property name="showGrid">
+    <bool>false</bool>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>204</number>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>好友列表</string>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/image/User.png</normalon>
+     </iconset>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="onlineUser">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>563</y>
+     <width>87</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>在线用户：0人</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>138</x>
+     <y>563</y>
+     <width>101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>aka@copyright</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>246</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/image/smbk5.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>pushButton_5</zorder>
+  <zorder>label_uinfo</zorder>
+  <zorder>tableWidget</zorder>
+  <zorder>onlineUser</zorder>
+  <zorder>label_2</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -14,9 +14,14 @@ class Tip : public QWidget
 public:
     explicit Tip(QWidget *parent = 0);
     ~Tip();
+    Ui::Tip *ui;
+signals:
+    void showtalkwindows(QString );
+private slots:
+    void on_pushButton_clicked();
 
 private:
-    Ui::Tip *ui;
+
 };
 
 #endif // TIP_H

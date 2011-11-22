@@ -1,8 +1,12 @@
 #include "gsession.h"
-
+#include <QDebug>
 
 QString GSession::uname = "";
 QSqlDatabase GSession::m_db;
+QSqlDatabase GSession::ms_db;
+QString  GSession::sipaddr = "";
+
+QStringList GSession::ipList;
 
 QString GSession::getTimeName()
 {
@@ -30,15 +34,15 @@ QString GSession::getTimeName()
     case 6:
     case 7:
     case 8:
-        timeName = "早上";
+        timeName = "早上好";
         break;
     case 9:
     case 10:
     case 11:
-        timeName = "上午";
+        timeName = "上午好";
         break;
     case 12:
-        timeName = "正午";
+        timeName = "正午好";
         break;
 
     case 13:
@@ -47,7 +51,7 @@ QString GSession::getTimeName()
     case 16:
     case 17:
     case 18:
-        timeName = "下午";
+        timeName = "下午好";
         break;
 
     case 19:
@@ -55,7 +59,7 @@ QString GSession::getTimeName()
     case 21:
     case 22:
     case 23:
-        timeName = "晚上";
+        timeName = "晚上好";
         break;
     default:
         timeName = "";
@@ -83,12 +87,28 @@ void GSession::openDatabase()
     m_db.setPassword("dbpwd");
     m_db.open();
 
-
 }
 
 void GSession::closeDatabase()
 {
     m_db.close();
+
 }
 
+void GSession::openmsDatabase()
+{
 
+    ms_db = QSqlDatabase::addDatabase("QSQLITE");
+    ms_db.setHostName("localhost");
+    ms_db.setDatabaseName("usermessage.db");
+    ms_db.setUserName("dbname");
+    ms_db.setPassword("dbpwd");
+    ms_db.open();
+    qDebug() << "sql2 ok";
+}
+
+void GSession::closemsDatabase()
+{
+    ms_db.close();
+
+}

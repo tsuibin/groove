@@ -6,7 +6,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QSqlDatabase>
-#include <QDebug>
+#include <QByteArray>
 /*
  GSession 用户会话数据
 */
@@ -17,11 +17,15 @@ public:
     GSession(){}
     static QString uname;
     static QSqlDatabase m_db;
-
+    static QString sipaddr;
+    static QSqlDatabase ms_db;
     static QString getTimeName();
+    static QStringList ipList;
     static void moveToCentre(QWidget *widget);
     static void openDatabase();
     static void closeDatabase();
+    static void openmsDatabase();
+    static void closemsDatabase();
 
 };
 

@@ -16,12 +16,16 @@ class GRegister : public QWidget
 public:
     explicit GRegister(QWidget *parent = 0);
     ~GRegister();
+
 signals:
     void gRegisterCancel();
+    void gRegisterSuccess();
 private slots:
     void on_pushButton_reg_clicked();
 
     void on_pushButton_cancel_clicked();
+
+
 
 private:
     Ui::GRegister *ui;

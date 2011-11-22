@@ -9,7 +9,8 @@ class SendMessage;
 class CommServer;
 class Login;
 class GRegister;
-
+class Message;
+class Tip;
 namespace Ui {
     class Comm;
 }
@@ -26,6 +27,12 @@ public:
 public slots:
     void createModule();
     void showRegisterSlot();
+    void sendtalkwidegt();
+    void talkwidegt(QString );
+    void talkMessage(QString );
+    void tipshow(QString );
+    void removeMsgWidgetList(QString);
+    void closeALLslots();
 
 private:
     Ui::Comm *ui;
@@ -33,6 +40,10 @@ private:
     Login *m_login;
     CommServer *m_commServer;
     GRegister *m_gregister;
+    CommServer *m_commserver;
+    Message *m_message;
+    Tip *m_tip;
+    QList<Message *> m_msgWidgetList;
 };
 
 #endif // COMM_H

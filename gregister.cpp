@@ -8,7 +8,7 @@ GRegister::GRegister(QWidget *parent) :
 {
     ui->setupUi(this);
     GSession::moveToCentre(this);
-    //insert into user(name,email,tel,pwd) values('lijia','aaa@akaedu.org','13888888888','bbb');
+
 }
 
 GRegister::~GRegister()
@@ -57,10 +57,17 @@ void GRegister::on_pushButton_reg_clicked()
     if ( query.exec( sql ) ) {
 
         qDebug() << "insert ok";
+        ui->label_msg->setText("恭喜您，注册成功，开始你的体验之旅吧！");
+        emit gRegisterSuccess();
+        this->close();
 //        while(query.next()) {
 //            qDebug() << query.value(0).toString();
 //            qDebug() << query.value(1).toString();
 //        }
+    }
+    else
+    {
+         ui->label_msg->setText("用户名已经存在！！！");
     }
 
 
@@ -71,3 +78,5 @@ void GRegister::on_pushButton_cancel_clicked()
     emit gRegisterCancel();
     this->close();
 }
+
+
